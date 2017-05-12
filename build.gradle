@@ -1,0 +1,58 @@
+/**
+ * 构建web-devil框架标准web工程
+ * @author leafxt
+ * @date 2017年5月12日
+ */
+
+apply plugin: 'war'
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+apply from: 'gretty.plugin'
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    'org.apache.commons:commons-lang3:+'
+}
+
+gretty {
+	httpPort = 9090
+	contextPath = 'test'
+}
+
+// 创建web默认路径和文件
+task create {
+	doLast {
+		println 'task: create'
+		def path = System.getProperty('user.dir')
+		new File('src/main/java').mkdirs()
+		new File('src/main/groovy').mkdirs()
+		new File('src/main/resources').mkdirs()
+		new File('src/test/java').mkdirs()
+		new File('src/test/groovy').mkdirs()
+		new File('src/test/resources').mkdirs()
+		new File('src/main/webapp/WEB-INF').mkdirs()
+		new File('src/main/webapp/resources/css').mkdirs()
+		new File('src/main/webapp/resources/js').mkdirs()
+		new File('src/main/webapp/resources/third').mkdirs()
+		new File('src/main/webapp/WEB-INF/view').mkdirs()
+		// 生成空白web.xml
+		def web = new File('src/main/webapp/WEB-INF/web.xml')
+		if (!web.exists()) {
+			web.createNewFile()
+		}
+		// 生成index
+		def index = new File('src/main/webapp/index.html')
+		def writer = index.newPrintWriter()
+		writer.write('test')
+		writer.flush()
+		writer.close()
+	}
+}
