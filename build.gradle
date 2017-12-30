@@ -4,10 +4,20 @@
  * @date 2017年5月12日
  */
 
+buildscript {
+	repositories {
+		jcenter() 
+	}
+	dependencies {
+		classpath 'com.bmuschko:gradle-tomcat-plugin:+'
+    }
+}
+
 apply plugin: 'war'
 apply plugin: 'groovy'
 apply plugin: 'eclipse'
-apply from: 'gretty.plugin'
+//apply plugin: 'org.akhikhl.gretty'
+apply plugin: 'com.bmuschko.tomcat'
 
 repositories {
 	mavenLocal()
@@ -18,12 +28,26 @@ repositories {
     jcenter()
 }
 
+def tomcatVersion = '7.0.59'
 dependencies {
-    'org.apache.commons:commons-lang3:+'
+	'org.apache.commons:commons-lang3:+'
+	tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+		   "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+		   "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
 }
 
-gretty {
-	httpPort = 9090
+//gretty {
+//	httpPort = 9090
+//	contextPath = 'test'
+//}
+
+/*
+eclipse.classpath.plusConfigurations += [configurations.provided]
+tasks.withType(JavaCompile) {  
+    options.encoding = "UTF-8"  
+}*/
+
+tomcat {
 	contextPath = 'test'
 }
 
