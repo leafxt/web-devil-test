@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:sec="http://www.springframework.org/schema/security" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+	http://www.springframework.org/schema/beans/spring-beans.xsd  
+	http://www.springframework.org/schema/security  
+	http://www.springframework.org/schema/security/spring-security.xsd">
+           
+	<sec:http auto-config="true" access-decision-manager-ref="rbacAccessDecisionManager">  
+        <!--<sec:intercept-url pattern="/css/**" security="none" />-->  
+    </sec:http>
+    
+    <bean id="rbacSecurityMetadataSource" class="net.windsoft.webdevil.core.security.authentication.RbacSecurityMetadataSource">  
+        <!--<property name="securityService" ref="securityService" />-->
+    </bean> 
+    
+    <sec:authentication-manager alias="authenticationManager">
+        <sec:authentication-provider user-service-ref="userDetailsService">  
+            <!--  
+            <s:password-encoder hash="sha" />  
+             -->  
+        </sec:authentication-provider>  
+    </sec:authentication-manager>
+    
+    <bean id="userDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl"> 
+   		<property name="dataSource" ref="dataSource" /> 
+	</bean>
+	 
+	<bean id="rbacAccessDecisionManager" class="net.windsoft.webdevil.core.security.authentication.RbacAccessDecisionManager">
+	</bean>
+
+	<!-- Needn't announce when using Spring Boot -->
+	<bean id="DaoFilterSecurityInterceptor" class="net.windsoft.webdevil.core.security.authentication.filter.DaoFilterSecurityInterceptor">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="accessDecisionManager" ref="rbacAccessDecisionManager" />
+		<property name="securityMetadataSource" ref="rbacSecurityMetadataSource" />
+	</bean>
+	
+</beans>
