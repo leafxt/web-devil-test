@@ -48,6 +48,7 @@ tasks.withType(JavaCompile) {
 }*/
 
 tomcat {
+	httpPort = '9090'
 	contextPath = 'test'
 }
 
