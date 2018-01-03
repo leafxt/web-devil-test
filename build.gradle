@@ -30,10 +30,12 @@ repositories {
 
 def tomcatVersion = '7.0.59'
 dependencies {
-	'org.apache.commons:commons-lang3:+'
-	tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
-		   "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
-		   "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+	compile 'org.apache.commons:commons-lang3:+',
+			'net.windsoft:web-devil:+'
+			
+	tomcat  "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+		    "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+		    "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
 }
 
 //gretty {
@@ -48,7 +50,7 @@ tasks.withType(JavaCompile) {
 }*/
 
 tomcat {
-	httpPort = '9090'
+	httpPort = 9090
 	contextPath = 'test'
 }
 
