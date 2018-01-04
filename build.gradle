@@ -28,16 +28,17 @@ repositories {
     jcenter()
 }
 
-def tomcatVersion = '7.0.59'
+sourceCompatibility = 1.9
+targetCompatibility = 1.9
+
+def tomcatVersion = '8.5.24'
 dependencies {
-	compile 'org.apache.commons:commons-lang3:+',
-			'net.windsoft:web-devil-core:+',
-			'javax.servlet:javax.servlet-api:+',
-		    'javax.servlet.jsp:jsp-api:+'
+	compile('org.apache.commons:commons-lang3:+')
+	compile('net.windsoft:web-devil-core:+')
 			
-	tomcat  "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
-		    "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
-		    "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+	tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}"
+	tomcat "org.apache.tomcat.embed:tomcat-embed-logging-juli:8.5.2"
+	tomcat "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
 		    
 }
 

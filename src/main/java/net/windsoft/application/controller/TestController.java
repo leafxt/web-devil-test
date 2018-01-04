@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import net.windsoft.webdevil.core.web.controller.BaseController;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class TestController extends BaseController {
 	
 	@RequestMapping("/test/page")
 	public Map<String, Object> test() {
+		System.out.println("test");
 		return Map.of("id", "value");
 	}
 	

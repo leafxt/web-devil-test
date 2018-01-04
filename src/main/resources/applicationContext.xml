@@ -24,9 +24,9 @@
 	<!--<context:property-placeholder location="classpath:MyPropFile.properties" />-->
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	
+	<import resource="http.xml"/>
 	<import resource="orm.xml"/>
 	<import resource="helper.xml"/>
-	<import resource="test.xml"/>
 	<import resource="security.xml"/>
 	
 </beans>
