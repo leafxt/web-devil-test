@@ -10,6 +10,7 @@ buildscript {
 	}
 	dependencies {
 		classpath 'com.bmuschko:gradle-tomcat-plugin:+'
+		classpath 'org.springframework.boot:spring-boot-gradle-plugin:+'
     }
 }
 
@@ -18,6 +19,7 @@ apply plugin: 'groovy'
 apply plugin: 'eclipse'
 //apply plugin: 'org.akhikhl.gretty'
 apply plugin: 'com.bmuschko.tomcat'
+apply plugin: 'org.springframework.boot'
 
 repositories {
 	mavenLocal()
@@ -33,8 +35,12 @@ targetCompatibility = 1.9
 
 def tomcatVersion = '8.5.24'
 dependencies {
+	compile 'junit:junit:+'
+	compile	'mysql:mysql-connector-java:+'
 	compile('org.apache.commons:commons-lang3:+')
-	compile('net.windsoft:web-devil-core:+')
+	compile('net.windsoft:web-devil-core:+') {
+		exclude module: 'slf4j-log4j12'
+	}
 			
 	tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}"
 	tomcat "org.apache.tomcat.embed:tomcat-embed-logging-juli:8.5.2"
