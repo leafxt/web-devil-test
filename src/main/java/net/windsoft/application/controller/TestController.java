@@ -13,7 +13,7 @@ public class TestController extends BaseController {
 	
 	@RequestMapping("/test/page")
 	public Map<String, Object> test() {
-		System.out.println("test");
+		System.out.println("test2");
 		return Map.of("id", "value");
 	}
 	
