@@ -31,8 +31,8 @@ repositories {
     jcenter()
 }
 
-sourceCompatibility = 1.9
-targetCompatibility = 1.9
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 def tomcatVersion = '8.5.24'
 dependencies {
@@ -41,6 +41,7 @@ dependencies {
 	}
 			
 	compile 'mysql:mysql-connector-java:6.0.6'
+	compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '1.5.9.RELEASE'
 				
 	//tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}"
 	//tomcat "org.apache.tomcat.embed:tomcat-embed-logging-juli:8.5.2"

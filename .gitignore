@@ -16,4 +16,5 @@ hs_err_pid*
 /log4j/
 /.git/
 /.settings/
-/.classpath
+.classpath
+.project

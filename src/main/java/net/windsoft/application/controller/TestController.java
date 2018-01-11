@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import net.windsoft.webdevil.core.util.MappingUtils;
 import net.windsoft.webdevil.core.web.controller.BaseController;
 
 @Controller
@@ -12,9 +13,9 @@ import net.windsoft.webdevil.core.web.controller.BaseController;
 public class TestController extends BaseController {
 	
 	@RequestMapping("/test/page")
-	public Map<String, Object> test() {
+	public Map<String, ?> test() {
 		System.out.println("test2");
-		return Map.of("id", "value");
+		return MappingUtils.smap("id", "value");
 	}
 	
 	@RequestMapping("/test")
