@@ -9,7 +9,7 @@ buildscript {
 		jcenter() 
 	}
 	dependencies {
-		classpath 'com.bmuschko:gradle-tomcat-plugin:+'
+		//classpath 'com.bmuschko:gradle-tomcat-plugin:+'
 		classpath 'org.springframework.boot:spring-boot-gradle-plugin:+'
     }
 }
@@ -18,7 +18,7 @@ apply plugin: 'war'
 apply plugin: 'groovy'
 apply plugin: 'eclipse'
 //apply plugin: 'org.akhikhl.gretty'
-apply plugin: 'com.bmuschko.tomcat'
+//apply plugin: 'com.bmuschko.tomcat'
 apply plugin: 'org.springframework.boot'
 
 repositories {
@@ -40,13 +40,11 @@ dependencies {
 		exclude module: 'slf4j-log4j12'
 	}
 			
-	compile 'junit:junit:+'
-	compile 'org.apache.commons:commons-lang3:+'
 	compile 'mysql:mysql-connector-java:6.0.6'
 				
-	tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}"
-	tomcat "org.apache.tomcat.embed:tomcat-embed-logging-juli:8.5.2"
-	tomcat "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+	//tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}"
+	//tomcat "org.apache.tomcat.embed:tomcat-embed-logging-juli:8.5.2"
+	//tomcat "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
 		    
 }
 
@@ -61,10 +59,11 @@ tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"  
 }*/
 
+/*
 tomcat {
 	httpPort = 9090
 	contextPath = 'test'
-}
+}*/
 
 // 创建web默认路径和文件
 task create {
