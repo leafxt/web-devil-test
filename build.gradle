@@ -17,6 +17,7 @@ buildscript {
 apply plugin: 'war'
 apply plugin: 'groovy'
 apply plugin: 'eclipse'
+apply plugin: 'idea'
 //apply plugin: 'org.akhikhl.gretty'
 //apply plugin: 'com.bmuschko.tomcat'
 apply plugin: 'org.springframework.boot'
