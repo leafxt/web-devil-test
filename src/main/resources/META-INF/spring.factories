@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration = net.windsoft.webdevil.core.configurer.WebDevilSecurityConfigurerAdapter
+org.springframework.boot.autoconfigure.EnableAutoConfiguration = net.windsoft.webdevil.core.configurer.WebFrameworkSecurityConfigurerAdapter
